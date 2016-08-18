@@ -1,0 +1,15 @@
+{% extends 'MeggiIndexBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="h_block h_news">
+        <div class="wrap">
+            <h2 class="back">{{ whereBuy.title }}</h2>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="news">
+            {{ whereBuy.value | raw }}
+        </div>
+    </div>
+{% endblock content %}

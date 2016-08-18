@@ -1,0 +1,8 @@
+
+        {{ form_start(form, {'action': path('profile_forgot'), 'method': 'POST'}) }}
+        {{ form_row(form.email) }}
+        <input type="submit" value="Восстановить">
+        {{ form_row(form._token) }}
+        {{ form_end(form) }}
+
+

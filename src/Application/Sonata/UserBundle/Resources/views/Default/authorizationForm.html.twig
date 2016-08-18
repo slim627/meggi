@@ -1,0 +1,20 @@
+
+        {{ form_start(authFormView, {'action': path('login_register_form'), 'method': 'POST'}) }}
+        {{ form_row(authFormView.email,{'attr' : {'placeholder' : 'E-mail'}}) }}
+        {{ form_row(authFormView.password,{'attr' : {'placeholder': 'Пароль'}}) }}
+
+        <a class="forgot" href="{{ path('profile_forgot') }}">Забыли пароль?</a>
+        {% if hideLinks is not defined or not hideLinks %}
+            <label class="check"><input name="check" type="checkbox"><b></b> Запомнить меня</label>
+            <!--
+            <p><a href="{{ path('partners') }}">Как стать нашим партнером?</a></p>
+            -->
+        {% endif %}
+        <input type="submit" value="Войти">
+        {% if returnUrl is defined %}
+            <input type="hidden" name="returnUrl" value="{{ returnUrl }}" />
+        {% endif %}
+        {{ form_row(authFormView._token) }}
+        {{ form_end(authFormView) }}
+
+

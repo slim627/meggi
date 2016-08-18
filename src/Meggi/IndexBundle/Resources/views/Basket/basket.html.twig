@@ -1,0 +1,133 @@
+{% extends 'MeggiIndexBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="h_block h_news">
+        <div class="wrap">
+            <h2 class="back">Редактирование заявки</h2>
+        </div>
+    </div>
+    <div class="wrap bc"><span>Редактирование заявки</span> <i></i> Подтверждение заявки</div>
+    <div class="k_tab">
+        <div class="k_tab_h">
+            <div class="wrap">
+                <div class="k_tab_col1"></div>
+                <div class="k_tab_col2"></div>
+                <div class="k_tab_col3">Наименование</div>
+                <div class="k_tab_col4">Колличество</div>
+                <div class="k_tab_col5">Итого</div>
+            </div>
+        </div>
+        {% for product in prodItem if product is not empty%}
+            <div class="k_tab_r" id="{{ product[0].id }}">
+                <div class="wrap">
+                    <div class="k_tab_col1"><a prod_id="{{ product[0].id }}" class="delete" href="javascript:void(0)">Удалить</a></div>
+                    <div class="k_tab_col2"><img src="{{ product[0] | itm_ipw_url('picture') }}" alt=""></div>
+                    <div class="k_tab_col3">
+                        <p>{{ product[0].name }}</p>
+                        <p>{{ product[0].article }}</p>
+                    </div>
+                    <div class="k_tab_col4 block-change-quantity">
+                        <a prod_id="{{ product[0].id }}" class="minus" href="javascript:void(0)">-</a>
+                        <input prod_id="{{ product[0].id }}" class="quantity-input" type="text" value="{{ product[1] }}">
+                        <a prod_id="{{ product[0].id }}" class="plus" href="javascript:void(0)">+</a>
+                        <p>шт.</p>
+                    </div>
+                    <div class="k_tab_col5 one-prod-sum">{{ (product[0].cost * product[1]) | format_amount }} р.</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="total">
+        <div class="wrap">
+            {% for flashMessage in app.session.flashbag.get('empty-basket') %}
+                <div style="text-align: center; font-size: 40px">{{ flashMessage }}</div>
+            {% endfor %}
+            {% if finalCostForAllProducts > 0 %}
+                <p>Для обеспечения наличия товара на складе оплатите и потдтвердите оплату в течении 2 суток.</p>
+                <p class="sum">Итого: <span id="full-sum">{{ finalCostForAllProducts | format_amount }} р. (Без НДС)</span></p>
+                <form action="{{ path('confirm') }}" method="post">
+                    <p><input type="submit" value="Оформить"></p>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        $('.plus').on('click', function(){
+            var prod_id = this.getAttribute("prod_id");
+            var inputElement = $(document.getElementById(prod_id)).find('.quantity-input');
+            var quantity = +inputElement.val()+1;
+            inputElement.val(quantity);
+            changeProductQuantity(prod_id, quantity);
+        });
+
+        $('.minus').on('click', function(){
+            var prod_id = this.getAttribute("prod_id");
+            var inputElement = $(document.getElementById(prod_id)).find('.quantity-input');
+            var quantity = +inputElement.val()-1;
+            if(parseInt(quantity) >= 0){
+                inputElement.val(quantity);
+                changeProductQuantity(prod_id, quantity);
+            }
+        });
+
+        $('.quantity-input').on('change', function(){
+            var prod_id = this.getAttribute('prod_id');
+            var quantity = this.value;
+            changeProductQuantity(prod_id, quantity);
+        });
+
+        function changeProductQuantity(prod_id, quantity){
+            var sum = 0;
+            $.ajax({
+                url: '{{ path('change_product_quantity') }}',
+                data: {prod_id : prod_id, quantity : quantity},
+                dataType : "json",
+                success: function (data) {
+                    $(document.getElementById(prod_id)).find('.one-prod-sum').html((parseInt(quantity) * data.cost).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ') + ' р.');
+                    var prod_sum_element = $('.one-prod-sum');
+                    for(var i = 0; i < prod_sum_element.length; i++){
+                        sum = sum + parseInt((prod_sum_element[i].textContent).replace(/\s+/g, ''));
+                    }
+
+                    var preg_string = /(\d)(?=(\d{3})+(?!\d))/g;
+                    $('.sum span').html(sum.toString().replace(preg_string, '$1 ') + ' р.');
+                    $('.span--hide').html(sum.toString().replace(preg_string, '$1 ') + ' р.');
+                }
+            });
+
+
+        }
+
+        $('.delete').on('click', function(){
+            var prod_id = this.getAttribute('prod_id');
+            this.closest('.k_tab_r').remove();
+            var preg_string = /(\d)(?=(\d{3})+(?!\d))/g;
+            $.ajax({
+                url: '{{ path('remove_from_basket') }}',
+                data: {prod_id : prod_id},
+                dataType : "json",
+                success: function (data) {
+
+                }
+            });
+
+            $.ajax({
+                url: '{{ path('change_header_basket') }}',
+                data: {param : 1, prod_id : prod_id},
+                success: function (data) {
+                    $('#basket-products-number').html(data.quantityAssortment);
+                    $('.span--hide').html(data.finalCostForAllProducts.toString().replace(preg_string, '$1 ') + ' руб.');
+                    $('.sum span').html(data.finalCostForAllProducts.toString().replace(preg_string, '$1 ') + ' р.');
+
+                    if(!data.quantityAssortment){
+                        document.location.reload();
+                    }
+                }
+            });
+
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+
+<div class="overview"></div>
+<!-- authorization -->
+
+<div class="login">
+    <p class="header">Авторизуйтесь</p>
+    {{ render(controller('ApplicationSonataUserBundle:Default:authorizationForm')) }}
+</div>
+<!-- /. authorization -->
+<!-- forgot password -->
+
+<div class="popup popup_password">
+    <p class="header">Забыли пароль?</p>
+    {{ render(controller('ApplicationSonataUserBundle:Default:forgotForm')) }}
+</div>
+
+<!-- /. forgot password -->
+<!--  registration -->
+
+{#<div class="popup popup_reg">#}
+{#{{ render(controller('ApplicationSonataUserBundle:Default:registrationForm')) }}#}
+{#</div>#}
+
+<!-- /. registration -->

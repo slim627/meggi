@@ -1,0 +1,44 @@
+
+    {% for error in formRegErrors %}
+        <div class="form_error">{{ error.message }}</div>
+    {% endfor %}
+    {{ form_start(formRegView, {'action': path('login_register_form'), 'method': 'POST'}) }}
+        <h4>Сведение о юридическом лице</h4>
+        <div class="reg_r_row">
+            <div class="reg_r_col reg_r_col1">{{ form_row(formRegView.companyName) }}<span>ОАО "Компания" или ИП Иванов И.И.</span></div>
+            <div class="reg_r_col reg_r_col2">{{ form_row(formRegView.UNP) }}<span>123456789</span></div>
+        </div>
+        <h4>Лицо, уполномоченное на заключение договора</h4>
+        <div class="reg_r_row">
+            <div class="reg_r_col reg_r_col3">{{ form_row(formRegView.lastname) }}<span>Иванов</span></div>
+            <div class="reg_r_col reg_r_col3">{{ form_row(formRegView.firstname) }}<span>Иван</span></div>
+            <div class="reg_r_col reg_r_col3">{{ form_row(formRegView.patronymic) }}<span>Сергеевич</span></div>
+            <div class="reg_r_col reg_r_col4">{{ form_row(formRegView.position) }}<span>Директор</span></div>
+            <div class="reg_r_col reg_r_col5">{{ form_row(formRegView.document) }}<span>Документ на основании, которого действует лицо</span></div>
+        </div>
+        <h4>Юридический адрес</h4>
+        <div class="reg_r_row">
+            <div class="reg_r_col reg_r_col6">{{ form_row(formRegView.juristicAddress) }}<span>Беларусь, Минск, 220030, пр-т. Независимости, дом 1, офис 34</span></div>
+        </div>
+        <h4>Банковские реквизиты</h4>
+        <div class="reg_r_row">
+            <div class="reg_r_col reg_r_col7">{{ form_row(formRegView.bankDetails) }}<span>3010000000000</span></div>
+            <div class="reg_r_col reg_r_col8">{{ form_row(formRegView.bankName) }}<span>Ф-л 110 ЗАО «Белсвиссбанк» г. Минск</span></div>
+            <div class="reg_r_col reg_r_col9">{{ form_row(formRegView.bankCode) }}<span>101</span></div>
+        </div>
+        <h4>Контактное лицо</h4>
+        <div class="reg_r_row">
+            <div class="reg_r_col reg_r_col10">{{ form_row(formRegView.person) }}<span>Петров Петр Петрович</span></div>
+            <div class="reg_r_col reg_r_col11">+</div>
+            <div class="reg_r_col reg_r_col12">{{ form_row(formRegView.countryCode) }}<span>375</span></div>
+            <div class="reg_r_col reg_r_col13">{{ form_row(formRegView.operatorCode) }}<span>29</span></div>
+            <div class="reg_r_col reg_r_col14">{{ form_row(formRegView.phoneNumber) }}<span>1234567</span></div>
+        </div>
+        <h4>Данные для доступа</h4>
+        <div class="reg_r_row">
+            <div class="reg_r_col reg_r_col15">{{ form_row(formRegView.email) }}</div>
+            <div class="reg_r_col reg_r_col16" style="display: inline-flex">{{ form_row(formRegView.plainPassword) }}</div>
+        </div>
+        {{ form_widget(formRegView._token) }}
+        <p class="reg_r_subm"><input type="submit" value="Зарегистрироваться"></p>
+    {{ form_end(formRegView) }}

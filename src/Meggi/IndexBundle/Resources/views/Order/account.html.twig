@@ -1,0 +1,165 @@
+{% extends 'MeggiIndexBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="h_block h_news">
+        <div class="wrap">
+            <h2 class="back">Кабинет пользователя</h2>
+        </div>
+    </div>
+    <div class="kab_header">
+        <div class="wrap2">
+            <p class="kab_name">{{ user.email }}</p>
+            <p>{{ user.companyName }}, УНП {{ user.unp }}</p>
+            <ul>
+                <li><a href="{{ path('account') }}" {% if not is_archive %}class="active"{% endif %}>Заказы</a></li>
+                <li><a href="{{ path('account', {'archive': true}) }}" {% if is_archive %}class="active"{% endif %}>Архив заказов</a></li>
+                <!--
+                <li><a href="#">Редактировать профиль</a></li>
+                -->
+            </ul>
+        </div>
+    </div>
+    <div class="wrap2 kab_line">
+        <p class="item1">Служба поддержки: +375 44 501-53-35 <span>ПН-ПТ 9:00—18:00</span></p>
+        <p class="item2">Внимание! Счет действителен в течении 2 суток <span>Вы должны подтвердить оплату в течении {{ time_for_order_payment_complete }} часов, иначе заявка будет аннулирована</span></p>
+        <p class="item3">Договор поставки № И-{{ user.id | format_agreement }} от {{ user.createdAt | formatDateShort }} <a href="{{ path('order_generate_agreement') }}" class="but">скачать</a></p>
+    </div>
+    <div class="wrap2 order">
+        {% for order in orders if order.isArchive == is_archive %}
+        <div class="order_item" order-id="{{ order.id }}">
+            <div class="order_stat">
+                <a href="#" class="more">Развернуть</a>
+                <div class="num"><div>Заявка №{{ order.id }} от {{ order.createdAt | formatDateShort }}</div></div>
+
+                {% if order.status == constant('Meggi\\IndexBundle\\Entity\\Orders::STATUS_BILLED') %}
+                    <div class="descr" style="color: #d3a900">{{ order.statuses[order.status] }}<span style="margin-right: 8px"></span>
+                        <a href="{{ path('order_generate_invoice', {'orderId': order.id}) }}" class="but download">скачать</a>
+                        <a href="javascript:void(0)" class="but approve" orderId="{{ order.id }}">подтвердить оплату</a>
+                        <span class="note">осталось: {{ order.createdAt | timeRemaining(time_for_order_payment_complete) }}</span>
+                    </div>
+                    <div class="price">{{ order.fullSumm | format_amount }} р. <span>/ {{ order.deliveries[order.delivery] }}</span></div>
+                    <div class="buts">
+                        <a href="{{ path('delete_order', {'orderId': order.id}) }}" class="but delete">удалить</a>
+                        <a href="{{ path('basket_load', {'orderId': order.id}) }}" class="but edit">редактировать</a>
+                    </div>
+
+                {% elseif order.status == constant('Meggi\\IndexBundle\\Entity\\Orders::STATUS_WAIT') %}
+                    <div class="descr" style="color: #d3a900">{{ order.statuses[order.status] }}</div>
+                    <div class="price">{{ order.fullSumm | format_amount }} р. <span>/ {{ order.deliveries[order.delivery] }}</span></div>
+
+                {% elseif order.status == constant('Meggi\\IndexBundle\\Entity\\Orders::STATUS_PAID') %}
+                    <div class="descr" style="color: #13a500">{{ order.statuses[order.status] }}</div>
+                    <div class="price">{{ order.fullSumm | format_amount }} р. <span>/ {{ order.deliveries[order.delivery] }}</span></div>
+                    <div class="buts"><a href="{{ path('order_move_to_archive', {'orderId': order.id}) }}" class="but archive">в архив</a></div>
+
+                {% elseif order.status == constant('Meggi\\IndexBundle\\Entity\\Orders::STATUS_OVERDUE') %}
+                    <div class="descr" style="color: #c32900">{{ order.statuses[order.status] }}</div>
+                    <div class="price">{{ order.fullSumm | format_amount }} р. <span>/ {{ order.deliveries[order.delivery] }}</span></div>
+                    <div class="buts"><a href="{{ path('order_move_to_archive', {'orderId': order.id}) }}" class="but archive">в архив</a></div>
+                {% else %}
+                    <div class="descr" style="color: #8b8b8b">{{ order.statuses[order.status] }}</div>
+                    <div class="price">{{ order.fullSumm | format_amount }} р. <span>/ {{ order.deliveries[order.delivery] }}</span></div>
+                    <div class="buts">
+                        <a href="{{ path('delete_order', {'orderId': order.id}) }}" class="but delete">удалить</a>
+                        <a href="{{ path('basket_load', {'orderId': order.id}) }}" class="but edit">редактировать</a>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="order_tab">
+                <div class="k_tab">
+                    <div class="k_tab_h">
+                        <div class="wrap">
+                            <div class="k_tab_col3">Наименование</div>
+                            <div class="k_tab_col4">Колличество</div>
+                            <div class="k_tab_col6">Цена</div>
+                            <div class="k_tab_col5">Итого</div>
+                        </div>
+                    </div>
+                    {% for item in order.items %}
+                    <div class="k_tab_r">
+                        <div class="wrap">
+                            <div class="k_tab_col3">
+                                <p>{{ item.product.name }}</p>
+                                <p>Артикул: {{ item.product.article }}</p>
+                            </div>
+                            <div class="k_tab_col4">{{ item.quantity }}</div>
+                            {% if order.delivery == 0 %}
+                                <div class="k_tab_col6">{{ ((item.product.cost * 0.95) | round ) | format_amount }} р.</div>
+                                <div class="k_tab_col5">{{ ((item.product.cost * 0.95  | round) * item.quantity  ) | format_amount}} р.</div>
+                            {% else %}
+                                <div class="k_tab_col6">{{ item.product.cost | format_amount }} р.</div>
+                                <div class="k_tab_col5">{{ (item.product.cost * item.quantity) | format_amount}} р.</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="total">
+                    <div class="wrap">
+                        <p class="sum">Итого:
+                            <span>{{ order.fullSumm | format_amount }} р.
+                                {% if order.delivery == constant('Meggi\\IndexBundle\\Entity\\Orders::DELIVERY_BY_MYSELF') %}(скидка {{ delivery_discount }}% — {{ (order.fullSumm*100/(100 - delivery_discount) - order.fullSumm) | number_format(0, '.') | format_amount }} р.){% endif %}
+                            </span></p>
+                        {% if order.delivery == constant('Meggi\\IndexBundle\\Entity\\Orders::DELIVERY_BY_MYSELF') %}
+                        <p class="dost">Самовывоз: <span>{{ manual_delivery_address }} (скидка {{ delivery_discount }}%)</span></p>
+                        {% else %}
+                        <p class="dost">Доставка: <span>{{ order.deliveryAddress }}</span></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="overview"></div>
+    <div class="order_popup">
+        <p class="header">Подтверждение оплаты</p>
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+            <label>НОМЕР ПЛАТЕЖНОГО ПОРУЧЕНИЯ</label>
+            {{ form_widget(form.number) }}
+            <div class="sel_gr">
+                <label>ДАТА ОПЛАТЫ</label>
+                {{ form_widget(form.date) }}
+            </div>
+            <label>СУММА</label>
+            {{ form_widget(form.sum) }}
+            {{ form_widget(form.order_id) }}
+            <input type="submit" value="ПОДТВЕРДИТЬ">
+        {{ form_end(form) }}
+    </div>
+
+    <script>
+        $(document).ready(function(){
+
+            $('select').styler();
+            $('body').addClass('order_body');
+
+            $('.but.approve').click(function(){
+                $('.overview').show();
+                $('.order_popup').show();
+                $('#form_order_id').val($(this).attr('orderId'));
+            });
+
+            $('.but.delete').click(function(){
+                if(!confirm('Вы уверены, что хотите удалить заказ?')){
+                    return false;
+                }
+            });
+
+            $('.order').click(function(event){
+                var elem = $(event.target);
+
+                if (elem.hasClass('more')) {
+                    var pr = elem.closest(".order_item");
+                    if (pr.hasClass("order_item_active")) { pr.removeClass("order_item_active") }
+                    else { pr.addClass("order_item_active") }
+                    return false;
+                }
+            });
+        });
+    </script>
+
+
+{% endblock content %}

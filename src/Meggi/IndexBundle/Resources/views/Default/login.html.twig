@@ -1,0 +1,11 @@
+{% if app.user is not empty %}
+    <li><div class="lk" title="{{ app.user.email }}">
+        <a href="{{ path('account') }}">Кабинет</a>
+    </div></li>
+{% endif %}
+{% if app.user is empty %}
+    {#<li><a href="javascript:void(0)" id="login">Вход/Регистрация</a></li>#}
+    <li><a href="{{ path('login_register_form') }}" id="login">Вход/Регистрация</a></li>
+{% else %}
+    <li><a href="{{ path('profile_logout') }}">Выйти</a></li>
+{% endif %}

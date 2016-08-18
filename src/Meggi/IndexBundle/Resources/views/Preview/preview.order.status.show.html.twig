@@ -1,0 +1,8 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field%}
+    <div>
+        {% set statuses = object.statuses %}
+        {{ statuses[object.status] }}
+    </div>
+{% endblock %}

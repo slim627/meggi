@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field%}
+    <div>
+        {% if object | itm_file_exists('preview') %}
+            <img src="{{ object | itm_file_path('preview') | imagine_filter('crop_preview') }}" />
+        {% endif %}
+    </div>
+{% endblock %}

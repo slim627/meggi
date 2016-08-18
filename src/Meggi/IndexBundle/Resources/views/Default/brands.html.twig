@@ -1,0 +1,3 @@
+{% for brand in brands %}
+    <li><a href="{{ path('all_products', {brand: brand.url}) }}" {% if 'product' in uri %} class="active" {% endif %}><img src="{{ brand | itm_ipw_url('picture')}}" /></a></li>
+{% endfor %}

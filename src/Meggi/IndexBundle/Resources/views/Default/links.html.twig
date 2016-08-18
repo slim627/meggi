@@ -1,0 +1,13 @@
+<li class="item1 brands">
+    <a href="javascript:void(0)">БРЕНДЫ</a>
+    <div>
+        <ul>
+            {{ render(controller('MeggiIndexBundle:Default:brands')) }}
+        </ul>
+    </div>
+</li>
+<li class="item2"><a href="{{ path('shares') }}"  {% if 'shares' in uri %} class="active" {% endif %}>АКЦИИ</a></li>
+<li class="item3"><a href="{{ path('news') }}"  {% if 'news' in uri %} class="active" {% endif %}>СТАТЬИ</a></li>
+<li class="item4"><a href="{{ path('partners') }}"  {% if 'partners' in uri %} class="active" {% endif %}>ПАРТНЕРАМ</a></li>
+<li class="item5"><a href="{{ path('where_buy') }}"  {% if 'where-buy' in uri %} class="active" {% endif %}>ГДЕ КУПИТЬ</a></li>
+<li class="item6"><a href="{{ path('company') }}"  {% if 'company' in uri %} class="active" {% endif %}>КОНТАКТЫ</a></li>

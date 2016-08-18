@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field%}
+    <div>
+        {% if object.picture is not empty %}
+            <img src="{{ object | itm_ipw_path('picture') | imagine_filter('crop_preview') }}" />
+        {% endif %}
+    </div>
+{% endblock %}

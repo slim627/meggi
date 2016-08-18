@@ -1,0 +1,118 @@
+services:
+    meggi_index.admin.banner:
+        class: Meggi\IndexBundle\Admin\BannerAdmin
+        arguments: [~, Meggi\IndexBundle\Entity\Banner, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Meggi, label: Банер, label_translator_strategy:sonata.admin.label.strategy.underscore}
+        calls:
+            - [setTranslationDomain, [MeggiIndexBundle]]
+
+    meggi_index.admin.config:
+        class: Meggi\IndexBundle\Admin\ConfigAdmin
+        arguments: [~, Meggi\IndexBundle\Entity\Config, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Настройки, label: Настройки, label_translator_strategy:sonata.admin.label.strategy.underscore}
+        calls:
+            - [setTranslationDomain, [MeggiIndexBundle]]
+
+    meggi_index.admin.product:
+        class: Meggi\IndexBundle\Admin\ProductAdmin
+        arguments: [~, Meggi\IndexBundle\Entity\Product, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Meggi, label: Продукты, label_translator_strategy:sonata.admin.label.strategy.underscore}
+        calls:
+            - [setTranslationDomain, [MeggiIndexBundle]]
+
+    meggi_index.admin.brand:
+        class: Meggi\IndexBundle\Admin\BrandAdmin
+        arguments: [~, Meggi\IndexBundle\Entity\Brand, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Meggi, label: Бренды, label_translator_strategy:sonata.admin.label.strategy.underscore}
+        calls:
+            - [setTranslationDomain, [MeggiIndexBundle]]
+
+    meggi_index.admin.category:
+        class: Meggi\IndexBundle\Admin\CategoryAdmin
+        arguments: [~, Meggi\IndexBundle\Entity\Category, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Meggi, label: Категории, label_translator_strategy:sonata.admin.label.strategy.underscore}
+        calls:
+            - [setTranslationDomain, [MeggiIndexBundle]]
+
+    meggi_index.admin.news:
+        class: Meggi\IndexBundle\Admin\NewsAdmin
+        tags:
+           - { name: sonata.admin, manager_type: orm, group: Публикации, label: Статьи, label_translator_strategy:sonata.admin.label.strategy.underscore }
+        arguments: [~, Meggi\IndexBundle\Entity\News, SonataAdminBundle:CRUD]
+        calls:
+           - [setTranslationDomain, [MeggiIndexBundle]]
+
+    gedmo.listener.softdeleteable:
+       class: Gedmo\SoftDeleteable\SoftDeleteableListener
+       tags:
+           - { name: doctrine.event_subscriber, connection: default }
+       calls:
+           - [ setAnnotationReader, [ @annotation_reader ] ]
+
+    gedmo.listener.timestampable:
+       class: Gedmo\Timestampable\TimestampableListener
+       tags:
+           - { name: doctrine.event_subscriber, connection: default }
+       calls:
+           - [ setAnnotationReader, [ @annotation_reader ] ]
+
+    gedmo.listener.sluggable:
+           class: Gedmo\Sluggable\SluggableListener
+           tags:
+               - { name: doctrine.event_subscriber, connection: default }
+           calls:
+               - [ setAnnotationReader, [ @annotation_reader ] ]
+
+    work_project.twig.date_extension:
+            class: Meggi\IndexBundle\Twig\DateExtension
+            tags:
+                - { name: twig.extension }
+
+    meggi_index.admin.product_option_box:
+        class: Meggi\IndexBundle\Admin\ProductOptionBoxAdmin
+        arguments: [~, Meggi\IndexBundle\Entity\ProductOptionBox, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Meggi, label: Тип количественной меры кораба, label_translator_strategy:sonata.admin.label.strategy.underscore}
+        calls:
+            - [setTranslationDomain, [MeggiIndexBundle]]
+
+    meggi_index.admin.product_option:
+        class: Meggi\IndexBundle\Admin\ProductOptionAdmin
+        arguments: [~, Meggi\IndexBundle\Entity\ProductOption, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Meggi, label: Тип количественной меры, label_translator_strategy:sonata.admin.label.strategy.underscore}
+        calls:
+            - [setTranslationDomain, [MeggiIndexBundle]]
+
+    work.twig.amount_extension:
+        class: Meggi\IndexBundle\Twig\AmountExtension
+        tags:
+           - { name: twig.extension }
+
+    meggi_index.container_listener:
+        class: Meggi\IndexBundle\EventListener\ContainerListener
+        arguments: ["@service_container"]
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+
+    meggi_index.admin.orders:
+        class: Meggi\IndexBundle\Admin\OrdersAdmin
+        arguments: [~, Meggi\IndexBundle\Entity\Orders, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Заказы, label: Заказы, label_translator_strategy:sonata.admin.label.strategy.underscore}
+        calls:
+            - [setTranslationDomain, [MeggiIndexBundle]]
+
+    meggi.converter.handler.docx_to_pdf:
+        class: Meggi\IndexBundle\Utility\Converter\DocxToPDFHandler
+        public: false
+        arguments: [%cloudconvert_api_key%, @logger]
+
+    meggi.converter.docx_to_pdf:
+        class: Meggi\IndexBundle\Utility\Converter\Converter
+        arguments: [@meggi.converter.handler.docx_to_pdf]

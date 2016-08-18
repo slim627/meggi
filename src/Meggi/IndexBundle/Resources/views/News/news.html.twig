@@ -1,0 +1,31 @@
+{% extends 'MeggiIndexBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="h_block h_news">
+        <div class="wrap">
+            {% if isShare %}
+                <h2 class="back">Акции</h2>
+            {% else %}
+                <h2 class="back">Статьи</h2>
+            {% endif %}
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="news">
+            <ul class="news_list">
+                {% if pagination is not empty %}
+                    {% for news in pagination %}
+                        {% if isShare %}
+                            <li><a href="{{ path('shares_name', {url: news.url}) }}">{{ news.name }}</a> <span>{{ news.createdAt | formatDate  }}</span></li>
+                        {% else %}
+                            <li><a href="{{ path('news_name', {url: news.url}) }}">{{ news.name }}</a> <span>{{ news.createdAt | formatDate  }}</span></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </ul>
+            <ul class="news_pagin">
+                {{ knp_pagination_render(pagination) }}
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

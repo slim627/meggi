@@ -1,0 +1,623 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="" >
+        <body>
+            <trans-unit id="1">
+                <source>show.label_id</source>
+                <target>Id</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>form.label_title</source>
+                <target>Название</target>
+            </trans-unit>
+            <trans-unit id="2.1">
+                <source>show.label_title</source>
+                <target>Название</target>
+            </trans-unit>
+            <trans-unit id="2.2">
+                <source>list.label_title</source>
+                <target>Название</target>
+            </trans-unit>
+            <trans-unit id="2.3">
+                <source>filter.label_title</source>
+                <target>Название</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>form.label_description</source>
+                <target>Описание</target>
+            </trans-unit>
+            <trans-unit id="3.1">
+                <source>show.label_description</source>
+                <target>Описание</target>
+            </trans-unit>
+            <trans-unit id="3.2">
+                <source>list.label_description</source>
+                <target>Описание</target>
+            </trans-unit>
+            <trans-unit id="3.3">
+                <source>filter.label_description</source>
+                <target>Описание</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>form.label_color</source>
+                <target>Цвет</target>
+            </trans-unit>
+            <trans-unit id="4.1">
+                <source>show.label_color</source>
+                <target>Цвет</target>
+            </trans-unit>
+            <trans-unit id="4.2">
+                <source>list.label_color</source>
+                <target>Цвет</target>
+            </trans-unit>
+            <trans-unit id="4.3">
+                <source>filter.label_color</source>
+                <target>Цвет</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>form.label_picture</source>
+                <target>Картинка</target>
+            </trans-unit>
+            <trans-unit id="5.1">
+                <source>show.label_picture</source>
+                <target>Картинка</target>
+            </trans-unit>
+            <trans-unit id="5.2">
+                <source>list.label_picture</source>
+                <target>Картинка</target>
+            </trans-unit>
+            <trans-unit id="5.3">
+                <source>filter.label_picture</source>
+                <target>Картинка</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>form.label_position</source>
+                <target>Позиция</target>
+            </trans-unit>
+            <trans-unit id="6.1">
+                <source>show.label_position</source>
+                <target>Позиция</target>
+            </trans-unit>
+            <trans-unit id="6.2">
+                <source>list.label_position</source>
+                <target>Позиция</target>
+            </trans-unit>
+            <trans-unit id="6.3">
+                <source>filter.label_position</source>
+                <target>Позиция</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>breadcrumb.link_banner_list</source>
+                <target>Список банеров</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>list.label__action</source>
+                <target>Действия</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>breadcrumb.link_banner_delete</source>
+                <target>Удаление банера</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>list.label_value</source>
+                <target>Значение</target>
+            </trans-unit>
+            <trans-unit id="10.1">
+                <source>form.label_value</source>
+                <target>Значение</target>
+            </trans-unit>
+            <trans-unit id="10.2">
+                <source>show.label_value</source>
+                <target>Значение</target>
+            </trans-unit>
+            <trans-unit id="10.3">
+                <source>filter.label_value</source>
+                <target>Значение</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>breadcrumb.link_config_list</source>
+                <target>Список настроек</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>form.label_name</source>
+                <target>Название</target>
+            </trans-unit>
+            <trans-unit id="12.1">
+                <source>show.label_name</source>
+                <target>Название</target>
+            </trans-unit>
+            <trans-unit id="12.2">
+                <source>list.label_name</source>
+                <target>Название</target>
+            </trans-unit>
+            <trans-unit id="12.3">
+                <source>filter.label_name</source>
+                <target>Название</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>form.label_article</source>
+                <target>Артикул</target>
+            </trans-unit>
+            <trans-unit id="13.1">
+                <source>show.label_article</source>
+                <target>Артикул</target>
+            </trans-unit>
+            <trans-unit id="13.2">
+                <source>list.label_article</source>
+                <target>Артикул</target>
+            </trans-unit>
+            <trans-unit id="13.3">
+                <source>filter.label_article</source>
+                <target>Артикул</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>form.label_quantity</source>
+                <target>Количество в коробе</target>
+            </trans-unit>
+            <trans-unit id="14.1">
+                <source>show.label_quantity</source>
+                <target>Количество в коробе</target>
+            </trans-unit>
+            <trans-unit id="14.2">
+                <source>list.label_quantity</source>
+                <target>Количество в коробе</target>
+            </trans-unit>
+            <trans-unit id="14.3">
+                <source>filter.label_quantity</source>
+                <target>Количество в коробе</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>form.label_bar_code</source>
+                <target>Штрих код</target>
+            </trans-unit>
+            <trans-unit id="15.1">
+                <source>show.label_bar_code</source>
+                <target>Штрих код</target>
+            </trans-unit>
+            <trans-unit id="15.2">
+                <source>list.label_bar_code</source>
+                <target>Штрих код</target>
+            </trans-unit>
+            <trans-unit id="15.3">
+                <source>filter.label_bar_code</source>
+                <target>Штрих код</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>form.label_cost</source>
+                <target>Стоимость</target>
+            </trans-unit>
+            <trans-unit id="16.1">
+                <source>show.label_cost</source>
+                <target>Стоимость</target>
+            </trans-unit>
+            <trans-unit id="16.2">
+                <source>list.label_cost</source>
+                <target>Стоимость</target>
+            </trans-unit>
+            <trans-unit id="16.3">
+                <source>filter.label_cost</source>
+                <target>Стоимость</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>form.label_quantity_cost</source>
+                <target>Стоимость короба</target>
+            </trans-unit>
+            <trans-unit id="17.1">
+                <source>show.label_quantity_cost</source>
+                <target>Стоимость короба</target>
+            </trans-unit>
+            <trans-unit id="17.2">
+                <source>list.label_quantity_cost</source>
+                <target>Стоимость короба</target>
+            </trans-unit>
+            <trans-unit id="17.3">
+                <source>filter.label_quantity_cost</source>
+                <target>Стоимость короба</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>breadcrumb.link_product_list</source>
+                <target>Список продуктов</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>breadcrumb.link_product_delete</source>
+                <target>Удаление продукта</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>breadcrumb.link_product_option_list</source>
+                <target>Список опции</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>breadcrumb.link_product_option_delete</source>
+                <target>Удаление опции</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>form.label_product_option</source>
+                <target>Тип количественной меры</target>
+            </trans-unit>
+            <trans-unit id="22.1">
+                <source>show.label_product_option</source>
+                <target>Тип количественной меры</target>
+            </trans-unit>
+            <trans-unit id="22.2">
+                <source>list.label_product_option</source>
+                <target>Тип количественной меры</target>
+            </trans-unit>
+            <trans-unit id="22.3">
+                <source>filter.label_product_option</source>
+                <target>Тип количественной меры</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>form.label_link</source>
+                <target>Ссылка</target>
+            </trans-unit>
+            <trans-unit id="23.1">
+                <source>show.label_link</source>
+                <target>Ссылка</target>
+            </trans-unit>
+            <trans-unit id="23.2">
+                <source>list.label_link</source>
+                <target>Ссылка</target>
+            </trans-unit>
+            <trans-unit id="23.3">
+                <source>filter.label_link</source>
+                <target>Ссылка</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>breadcrumb.link_brand_list</source>
+                <target>Список брендов</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>breadcrumb.link_brand_delete</source>
+                <target>Удаление брендов</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>breadcrumb.link_category_list</source>
+                <target>Список категорий</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>breadcrumb.link_category_delete</source>
+                <target>Удаление категории</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>form.label_brand</source>
+                <target>Бренд</target>
+            </trans-unit>
+            <trans-unit id="28.1">
+                <source>show.label_brand</source>
+                <target>Бренд</target>
+            </trans-unit>
+            <trans-unit id="28.2">
+                <source>list.label_brand</source>
+                <target>Бренд</target>
+            </trans-unit>
+            <trans-unit id="28.3">
+                <source>filter.label_brand</source>
+                <target>Бренд</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>form.label_categories</source>
+                <target>Категории</target>
+            </trans-unit>
+            <trans-unit id="29.1">
+                <source>show.label_categories</source>
+                <target>Категории</target>
+            </trans-unit>
+            <trans-unit id="29.2">
+                <source>list.label_categories</source>
+                <target>Категории</target>
+            </trans-unit>
+            <trans-unit id="29.3">
+                <source>filter.label_categories</source>
+                <target>Категории</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>form.label_quantity_for_one</source>
+                <target>Количество</target>
+            </trans-unit>
+            <trans-unit id="30.1">
+                <source>show.label_quantity_for_one</source>
+                <target>Количество</target>
+            </trans-unit>
+            <trans-unit id="30.2">
+                <source>list.label_quantity_for_one</source>
+                <target>Количество</target>
+            </trans-unit>
+            <trans-unit id="30.3">
+                <source>filter.label_quantity_for_one</source>
+                <target>Количество</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>form.label_content</source>
+                <target>Текст</target>
+            </trans-unit>
+            <trans-unit id="31.1">
+                <source>show.label_content</source>
+                <target>Текст</target>
+            </trans-unit>
+            <trans-unit id="31.2">
+                <source>list.label_content</source>
+                <target>Текст</target>
+            </trans-unit>
+            <trans-unit id="31.3">
+                <source>filter.label_content</source>
+                <target>Текст</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>breadcrumb.link_news_list</source>
+                <target>Список новостей</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>breadcrumb.link_news_delete</source>
+                <target>Удаление новости</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>show.label_created_at</source>
+                <target>Дата создания</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>show.label_meta_title</source>
+                <target>Заголовок</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>show.label_meta_description</source>
+                <target>Описание</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>show.label_meta_keywords</source>
+                <target>Ключевые слова</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>form.label_brand_title</source>
+                <target>Заголовок бренда</target>
+            </trans-unit>
+            <trans-unit id="38.1">
+                <source>show.label_brand_title</source>
+                <target>Заголовок бренда</target>
+            </trans-unit>
+            <trans-unit id="38.2">
+                <source>list.label_brand_title</source>
+                <target>Заголовок бренда</target>
+            </trans-unit>
+            <trans-unit id="38.3">
+                <source>filter.label_brand_title</source>
+                <target>Заголовок бренда</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>form.label_weight</source>
+                <target>Сортировка</target>
+            </trans-unit>
+            <trans-unit id="39.1">
+                <source>show.label_weight</source>
+                <target>Сортировка</target>
+            </trans-unit>
+            <trans-unit id="39.2">
+                <source>list.label_weight</source>
+                <target>Сортировка</target>
+            </trans-unit>
+            <trans-unit id="39.3">
+                <source>filter.label_weight</source>
+                <target>Сортировка</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>form.label_title_color</source>
+                <target>Цвет плашки</target>
+            </trans-unit>
+            <trans-unit id="40.1">
+                <source>show.label_title_color</source>
+                <target>Цвет плашки</target>
+            </trans-unit>
+            <trans-unit id="40.2">
+                <source>list.label_title_color</source>
+                <target>Цвет плашки</target>
+            </trans-unit>
+            <trans-unit id="40.3">
+                <source>filter.label_title_color</source>
+                <target>Цвет плашки</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>form.label_frame_color</source>
+                <target>Цвет рамки</target>
+            </trans-unit>
+            <trans-unit id="41.1">
+                <source>show.label_frame_color</source>
+                <target>Цвет рамки</target>
+            </trans-unit>
+            <trans-unit id="41.2">
+                <source>list.label_frame_color</source>
+                <target>Цвет рамки</target>
+            </trans-unit>
+            <trans-unit id="41.3">
+                <source>filter.label_frame_color</source>
+                <target>Цвет рамки</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>form.label_product_option_box</source>
+                <target>Тип количественной меры кораба</target>
+            </trans-unit>
+            <trans-unit id="42.1">
+                <source>show.label_product_option_box</source>
+                <target>Тип количественной меры кораба</target>
+            </trans-unit>
+            <trans-unit id="42.2">
+                <source>list.label_product_option_box</source>
+                <target>Тип количественной меры кораба</target>
+            </trans-unit>
+            <trans-unit id="42.3">
+                <source>filter.label_product_option_box</source>
+                <target>Тип количественной меры кораба</target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>breadcrumb.link_orders_list</source>
+                <target>Список заказов</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>list.label_id</source>
+                <target>Номер заказа</target>
+            </trans-unit>
+            <trans-unit id="45.1">
+                <source>form.label_id</source>
+                <target>Номер заказа</target>
+            </trans-unit>
+            <trans-unit id="45.2">
+                <source>show.label_id</source>
+                <target>Номер заказа</target>
+            </trans-unit>
+            <trans-unit id="45.3">
+                <source>filter.label_id</source>
+                <target>Номер заказа</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>show.label_user</source>
+                <target>Пользователь</target>
+            </trans-unit>
+            <trans-unit id="46.1">
+                <source>form.label_user</source>
+                <target>Пользователь</target>
+            </trans-unit>
+            <trans-unit id="46.2">
+                <source>list.label_user</source>
+                <target>Пользователь</target>
+            </trans-unit>
+            <trans-unit id="46.3">
+                <source>filter.label_user</source>
+                <target>Пользователь</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>show.label_status</source>
+                <target>Статус заказа</target>
+            </trans-unit>
+            <trans-unit id="47.1">
+                <source>form.label_status</source>
+                <target>Статус заказа</target>
+            </trans-unit>
+            <trans-unit id="47.2">
+                <source>list.label_status</source>
+                <target>Статус заказа</target>
+            </trans-unit>
+            <trans-unit id="47.3">
+                <source>filter.label_status</source>
+                <target>Статус заказа</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>show.label_full_summ</source>
+                <target>Полная стоимость</target>
+            </trans-unit>
+            <trans-unit id="48.1">
+                <source>form.label_full_summ</source>
+                <target>Полная стоимость</target>
+            </trans-unit>
+            <trans-unit id="48.2">
+                <source>list.label_full_summ</source>
+                <target>Полная стоимость</target>
+            </trans-unit>
+            <trans-unit id="48.3">
+                <source>filter.label_full_summ</source>
+                <target>Полная стоимость</target>
+            </trans-unit>
+            <trans-unit id="49">
+                <source>list.label_updated_at</source>
+                <target>Дата добавления</target>
+            </trans-unit>
+            <trans-unit id="49.1">
+                <source>form.label_updated_at</source>
+                <target>Дата добавления</target>
+            </trans-unit>
+            <trans-unit id="49.2">
+                <source>show.label_updated_at</source>
+                <target>Дата добавления</target>
+            </trans-unit>
+            <trans-unit id="49.3">
+                <source>filter.label_updated_at</source>
+                <target>Дата добавления</target>
+            </trans-unit>
+            <trans-unit id="50">
+                <source>list.label_delivery</source>
+                <target>Доставка</target>
+            </trans-unit>
+            <trans-unit id="50.1">
+                <source>form.label_delivery</source>
+                <target>Доставка</target>
+            </trans-unit>
+            <trans-unit id="50.2">
+                <source>show.label_delivery</source>
+                <target>Доставка</target>
+            </trans-unit>
+            <trans-unit id="50.3">
+                <source>filter.label_delivery</source>
+                <target>Доставка</target>
+            </trans-unit>
+            <trans-unit id="51">
+                <source>show.label_item</source>
+                <target>Продукты</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>form.label_file</source>
+                <target>Прикрепить файл</target>
+            </trans-unit>
+            <trans-unit id="52.1">
+                <source>show.label_file</source>
+                <target>Прикрепить файл</target>
+            </trans-unit>
+            <trans-unit id="52.2">
+                <source>list.label_file</source>
+                <target>Прикрепить файл</target>
+            </trans-unit>
+            <trans-unit id="52.3">
+                <source>filter.label_file</source>
+                <target>Прикрепить файл</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>show.label_message</source>
+                <target>Комментарий к заказу</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>show.label_payment_number</source>
+                <target>Платежное поручение</target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>show.label_payment_date</source>
+                <target>Дата платежа</target>
+            </trans-unit>
+            <trans-unit id="56">
+                <source>show.label_payment_sum</source>
+                <target>Сумма платежа</target>
+            </trans-unit>
+            <trans-unit id="57">
+                <source>list.label_is_available</source>
+                <target>В наличии</target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>filter.label_is_available</source>
+                <target>В наличии</target>
+            </trans-unit>
+            <trans-unit id="59">
+                <source>show.label_is_available</source>
+                <target>В наличии</target>
+            </trans-unit>
+            <trans-unit id="60">
+                <source>form.label_is_available</source>
+                <target>В наличии</target>
+            </trans-unit>
+            <trans-unit id="list.label_is_share">
+                <source>list.label_is_share</source>
+                <target>Акция</target>
+            </trans-unit>
+            <trans-unit id="form.label_is_share">
+                <source>form.label_is_share</source>
+                <target>Акция</target>
+            </trans-unit>
+            <trans-unit id="show.label_is_share">
+                <source>show.label_is_share</source>
+                <target>Акция</target>
+            </trans-unit>
+            <trans-unit id="filter.label_is_share">
+                <source>filter.label_is_share</source>
+                <target>Акция</target>
+            </trans-unit>
+            <trans-unit id="form.label_created_at">
+                <source>form.label_created_at</source>
+                <target>Дата создания</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

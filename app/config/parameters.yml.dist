@@ -1,0 +1,34 @@
+# This file is a "template" of what your parameters.yml file should look like
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+    # You should uncomment this if you want use pdo_sqlite
+    # database_path: "%kernel.root_dir%/data.db3"
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+
+    locale:            en
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsNotSoSecretChangeIt
+    upload_path: uploads
+    upload_url: /uploads
+    # Time in hours
+    time_for_order_payment_complete: 48
+    # Discount for users that do not use delivery (in %)
+    delivery_discount: 5
+    manual_delivery_address: г. Минск,  ул. Бабушкина, 21А, РБ
+
+    # Email parameters
+    forgot_email_subject: Восстанавление пароля на Meggi.by
+    forgot_email_from: no-reply@meggi.by
+    forgot_email_content: Ваш новый пароль %password%
+    VAT: 20
+    cloudconvert_api_key: B0XpLzzhFDZ4TmdPzOQw0AXbE0wWlawLaEdczoxbJ4r5oUTnou_1HhekNflritdWgRS6MSTSngEtBl6H3Xg8EQ

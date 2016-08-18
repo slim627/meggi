@@ -1,0 +1,63 @@
+{% extends 'MeggiIndexBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {% if brand is not empty %}
+        <style>
+           .jq-selectbox {
+               border-color: #{{ brand.frameColor }}
+           }
+        </style>
+    {% endif %}
+{% endblock stylesheets %}
+
+{% block content %}
+{% if 'brand' in app.request.requesturi %}
+    <div class="h_block" style="background: #{{ brand.titleColor }}">
+        <div class="wrap">
+
+            <h2>{{ brand.brandTitle }}</h2>
+            <select class="form-control sel_st">
+                <option value="{{ path('category_products', {brand: brand.url, category: 'all-products'}) }}">Весь ассортимент</option>
+                {% for category in categories %}
+                    {% set path = path('category_products', {brand: brand.url, category:category.url}) %}
+                    <option {% if path in app.request.requesturi %} selected="selected"{% endif %} value='{{ path }}'>{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+{% else %}
+    <div class="h_block">
+        <div class="wrap">
+        {% if category %}
+            <h2>{{ category.name }}</h2>
+        {% endif %}
+        <select class="form-control sel_st">
+            <option value="{{ path('category_products', {category: 'all-products'}) }}">Всесь ассортимент</option>
+            {% for category in categories %}
+                {% set path = path('category_products', {category:category.url}) %}
+                <option {% if path in app.request.requesturi %} selected="selected"{% endif %} value='{{ path }}'>{{ category.name }}</option>
+            {% endfor %}
+        </select>
+        </div>
+    </div>
+{% endif %}
+
+<div class="wrap">
+    <ul class="catalog_list">
+        {% for product in products %}
+            {% if category %}
+                <li><a href="{{ path('product', {url: product.url, category:category.url}) }}"><span><img src="{{ product | itm_ipw_url('picture') }}" alt=""></span><b>{{ product.name }}</b></a></li>
+            {% else %}
+                <li><a href="{{ path('product', {url: product.url}) }}"><span><img src="{{ product | itm_ipw_url('picture') }}" alt=""></span><b>{{ product.name }}</b></a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+<script>
+    $('select').on('change', function(){
+        val = $('select').val();
+        document.location.href = val;
+    })
+</script>
+{% endblock content %}

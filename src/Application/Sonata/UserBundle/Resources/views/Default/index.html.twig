@@ -1,0 +1,27 @@
+{% extends 'MeggiIndexBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="h_block h_news">
+        <div class="wrap">
+            <h2 class="back">Вход/Регистрация</h2>
+        </div>
+    </div>
+    {#<div class="wrap bc"><a href="{{ path('show_basket') }}">Редактирование заявки</a> <i></i> <span>Вход/Регистрация</span> <i></i> Подтверждение заявки</div>#}
+    <div class="reg_h">
+        <div class="wrap">
+            <h3 class="reg_h1">Вход</h3>
+            <h3 class="reg_h2">Регистрация</h3>
+        </div>
+    </div>
+    <div class="reg_b">
+        <div class="wrap">
+            <div class="reg_l">
+            {{ include('ApplicationSonataUserBundle:Default:authorizationForm.html.twig', {'authFormView': authFormView, 'hideLinks': true, 'returnUrl': path('confirm')}) }}
+            </div>
+
+            <div class="reg_r">
+            {{ include('ApplicationSonataUserBundle:Default:registrationForm.html.twig', {'formRegView' : formRegView}) }}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

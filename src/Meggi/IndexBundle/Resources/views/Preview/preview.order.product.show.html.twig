@@ -1,0 +1,48 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field%}
+    <div>
+        <table>
+            <tr class="table-result">
+                <td> Название продукта </td>
+                <td> Артикул </td>
+                <td> Количество </td>
+                <td> Цена за единицу </td>
+                <td> Цена за все </td>
+            </tr>
+
+            {% for item in object.items %}
+                <tr class="table-result">
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.product.article }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.product.quantityCost | format_amount }}</td>
+                <td>{{ (item.product.quantityCost * item.quantity) | format_amount }} р.</td>
+                </tr>
+            {% endfor %}
+
+            {% if object.delivery == 0 %}
+            <tr class="table-result">
+                <td>Скидка 5%</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ ((object.fullSumm*100/95) | round(0) - object.fullSumm) | format_amount }} р.</td>
+            <tr>
+            {% endif %}
+
+            <tr class="table-result">
+                {% if object.delivery == 0 %}
+                <td>Конечный сумма(с учетом скидки)</td>
+                {% else %}
+                <td>Конечный сумма</td>
+                {% endif %}
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ object.fullSumm | format_amount }} р.</td>
+            <tr>
+
+        </table>
+    </div>
+{% endblock %}

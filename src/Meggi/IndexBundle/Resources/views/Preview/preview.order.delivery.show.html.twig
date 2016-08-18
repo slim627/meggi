@@ -1,0 +1,12 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field%}
+    <div>
+        {% if object.delivery == constant('Meggi\\IndexBundle\\Entity\\Orders::DELIVERY_BY_COMPANY') %}
+            {{ object.deliveryAddress }}
+        {% else %}
+            {% set delivery = object.delivery %}
+            {{ object.deliveries[delivery] }}
+        {% endif %}
+    </div>
+{% endblock %}

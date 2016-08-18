@@ -1,0 +1,13 @@
+{% extends 'MeggiIndexBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="h_block h_news">
+        <div class="wrap">
+            <h2 class="back">Заявка успешно отправлена!</h2>
+        </div>
+    </div>
+    <div class="wrap order_ok">
+        <p>Следите за статусом обработки вашей заявки в <a href="{{ path('account') }}">личном кабинете</a>.</p>
+        <p>Наш сотрудник свяжется с вами в ближайшее время для утверждения вашего заказа.</p>
+    </div>
+{% endblock %}

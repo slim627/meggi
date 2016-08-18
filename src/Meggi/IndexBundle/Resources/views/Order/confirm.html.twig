@@ -1,0 +1,116 @@
+{% extends 'MeggiIndexBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="h_block h_news">
+        <div class="wrap">
+            <h2 class="back">Подтверждение заявки</h2>
+        </div>
+    </div>
+    <div class="wrap bc"><a href="{{ path('show_basket') }}">Редактирование заявки</a> <i></i> <span>Подтверждение заявки</span></div>
+    <div class="k_tab confirm_tab">
+        <div class="k_tab_h">
+            <div class="wrap">
+                <div class="k_tab_col3">Наименование</div>
+                <div class="k_tab_col6">Стоимость без НДС</div>
+                <div class="k_tab_col4">Колличество</div>
+                <div class="k_tab_col5">Итого</div>
+            </div>
+        </div>
+        {% for product in products %}
+            <div class="k_tab_r">
+                <div class="wrap">
+                    <div class="k_tab_col3">
+                        <p>{{ product[0].name }}</p>
+                        <p>{{ product[0].article }}</p>
+                    </div>
+                    <div class="k_tab_col6 prod-cost">{{ product[0].cost | format_amount }} р.</div>
+                    <div class="k_tab_col4">{{ product[1] }}</div>
+                    <div class="k_tab_col5 prod-sum">{{ (product[1] * product[0].cost) | format_amount }} р.</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="total total_confirm">
+        <div class="wrap">
+            <p class="sum">Итого: <span id="result-sum">{{ costResult | format_amount }} р. (без НДС)</span>
+            <i id="discount">(скидка {{ delivery_discount }}% — {{ (costResult - costDiscountResult) | format_amount }} р.)</i>
+            </p>
+        </div>
+    </div>
+    <form action="{{ path('close_confirm') }}" method="post">
+    <div class="k_addr">
+        <div class="wrap">
+            <h3>Выберите адрес для доставки</h3>
+            <label class="k_addr_ch k_addr_ch1">
+                <input id="radio_checked" type="radio" name="addr" value="{{ constant('Meggi\\IndexBundle\\Entity\\Orders::DELIVERY_BY_MYSELF') }}">
+                <i></i>
+                Самовывоз ({{ manual_delivery_address }}) - <span>скидка {{ delivery_discount }}%</span>
+            </label>
+            <label class="k_addr_ch k_addr_ch2">
+                <input type="radio" checked name="addr" value="{{ constant('Meggi\\IndexBundle\\Entity\\Orders::DELIVERY_BY_COMPANY') }}">
+                <i></i>
+                <input type="text" name="delivery-address">
+                <span>Минск, пр-т. Независимости, дом 1, офис 34</span>
+                <p>Дотсавка осуществляется по областным городам: <b>Минск, Брест, Витебск, Гомель, Гродно, Могилев</b>.<br>По вопросам доставки в другие города свяжитесь с менеджером по телефону: <b>+375 44 501-53-38 Елена Ивановна</b></p>
+            </label>
+            <h3>Комментарий к заказу</h3>
+            <textarea name="message"></textarea>
+        </div>
+    </div>
+    <div class="k_but">
+		<div class="wrap">
+			<a href="{{ path('show_basket') }}" class="noact">Редактировать</a>
+			<input type="submit" value="Отправить заявку">
+		</div>
+	</div>
+    </form>
+
+	<script>
+	    document.getElementById('discount').style.display = 'none';
+
+	    $('input[type=radio]').on('click', function(){
+
+	        var arrayProdCosts = $('.prod-cost');
+            var arrayProdSum = $('.prod-sum');
+
+	        if(document.getElementById('radio_checked').checked){
+                document.getElementById('discount').style.display = 'inline-block';
+                var resSumWithDiscount = {{ costDiscountResult }};
+                $(document.getElementById('result-sum')).html(parseInt(resSumWithDiscount).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ') + ' р. (без НДС)');
+
+                changeValue(true, arrayProdCosts);
+                changeValue(true, arrayProdSum);
+
+	        }else{
+	            document.getElementById('discount').style.display = 'none';
+	            var resSum = {{ costResult  }};
+	            $(document.getElementById('result-sum')).html(parseInt(resSum).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ') + ' р. (без НДС)');
+
+	            changeValue(false, arrayProdCosts);
+	            changeValue(false, arrayProdSum)
+	        }
+
+            function changeValue(boolean, object) {
+	            $.each(object, function(key, value){
+	                removeSpace = value.innerHTML.replace(/ +/g, "");
+                    cost = parseInt(removeSpace);
+                    if(boolean){
+                        finalCost = Math.round(cost * 0.95);
+                    }else{
+                        finalCost = Math.round(cost * 100 / 95);
+                    }
+                    object[key].innerHTML = parseInt(finalCost).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ') + ' р.';
+	            });
+            }
+	    });
+
+
+	    $('input[type=submit]').on('click', function(){
+            $('#basket-products-number').html(0);
+            $('.span--hide').html(0 + ' руб.');
+            $(document.getElementsByClassName('sum')).find('span').value = '0 р. (без НДС)';
+	    })
+    </script>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends 'MeggiIndexBundle::layout.html.twig' %}
+
+{% block content %}
+<div class="h_block h_news">
+    <div class="wrap">
+        {% if isShare %}
+            <h2 class="back"><span><a href="{{ path('shares') }}">Назад</a>Акции</span></h2>
+        {% else %}
+            <h2 class="back"><span><a href="{{ path('news') }}">Назад</a>Статьи</span></h2>
+        {% endif %}
+    </div>
+</div>
+<div class="wrap">
+    <div class="news">
+        <h3>{{ news.name }}</h3>
+        <p class="date">{{ news.createdAt | formatDate }}</p>
+        {{ news.content | raw }}
+    </div>
+</div>
+{% endblock %}

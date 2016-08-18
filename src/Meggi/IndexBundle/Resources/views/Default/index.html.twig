@@ -1,0 +1,32 @@
+{% extends 'MeggiIndexBundle::layout.html.twig' %}
+
+{% block content %}
+    {% for banner in banners %}
+        <div {% if banner.position == 0 %} class="block right" {% else %}class="block left"{% endif %} style="background: #{{ banner.color }}">
+            <div class="wrap">
+                <h2>{{ banner.title | raw }}</h2>
+                {{ banner.description | raw }}
+                <p><a href="{{ banner.link }}" class="button">Каталог</a></p>
+                <img src="{{ banner | itm_ipw_url('picture') }}" alt="" />
+            </div>
+        </div>
+    {% endfor %}
+
+    <script>
+        $(document).ready(function(){
+
+        });
+
+        $(window).scroll(function(){
+            var top = $(this).scrollTop();
+            var wdt = $(this).width();
+            if (top > 161 && wdt > 874) {
+                $('.top_wrap').addClass('fixed');
+                $('body').css('padding-top', '161px');
+            } else {
+                $('.top_wrap').removeClass('fixed');
+                $('body').css('padding-top', '0px');
+            }
+        });
+    </script>
+{% endblock content %}

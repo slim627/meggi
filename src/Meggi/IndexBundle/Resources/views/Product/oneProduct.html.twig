@@ -1,0 +1,89 @@
+{% extends 'MeggiIndexBundle::layout.html.twig' %}
+
+{% block content %}
+
+<div class="h_block" style="background: #{{ product.brand.titleColor }}">
+    <div class="wrap">
+        <h2 class="back"><span><a href="{{ path('all_products', {brand: product.brand.url }) }}">Назад</a>{{ product.brand.brandTitle }}</span></h2>
+    </div>
+</div>
+<div class="product">
+    <div class="wrap">
+        <div class="prod_img"><img src="{{ product | itm_ipw_url('picture') }}" alt=""></div>
+        <div class="prod_dscr">
+            <h3>{{ product.name }}</h3>
+            {% if product.description is not empty %}{{ product.description | raw }}{% endif %}
+            <p><strong>Артикул:</strong>  {% if product.article is not empty %}{{ product.article }}{% endif %}<br>
+                <strong>Штрих-код:</strong> {% if product.barCode is not empty %}{{ product.barCode }}{% endif %}<br>
+                <strong>{{ product.productOption }}:</strong>{% if product.quantityForOne is not empty %} {{ product.quantityForOne }}{% endif %} <br>
+                <strong>{% if product.productOptionBox is not empty %}{{ product.productOptionBox.name }}{% else %} Количество в коробе {% endif %}:</strong> {% if product.quantity is not empty %}{{ product.quantity }}{% else %}0{% endif %} шт.
+            </p>
+            {% if product.isAvailable %}
+            <p class="price">
+                <strong>Стоимость без НДС:</strong>
+                {% if app.user is empty %}
+                    <a style="color: #587ECA" href="{{ path('login_register_form') }}">вход для юр. лиц</a>
+                {% elseif product.cost is not empty %}
+                    {{ product.cost | format_amount }} руб.
+                {% else %}
+                    0 руб.
+                {% endif %}<br>
+
+                <strong>Стоимость короба без НДС:</strong>
+                {% if app.user is empty%}
+                    <a style="color: #587ECA" href="{{ path('login_register_form') }}">вход для юр. лиц</a>
+                {% elseif product.quantityCost is not empty %}
+                    {{ product.quantityCost | format_amount }} руб.
+                {% else %}
+                    0 руб.
+                {% endif %}
+            </p>
+            {{ form_start(form) }}
+                <div class="field-for-valu" {% if app.user is empty %} style="display: none" {% else %} style="display: block" {% endif %}>
+                    <p class="item1">Количество упаковок</p>
+                    <div class="form-text">{{ form_row(form.quantity) }}</div>
+                    {{ form_widget(form.id, { 'attr': {'value': product.id} }) }}
+                    <input type="submit" id="push" value="в корзину" product_id="{{ product.id }}">
+                    <input id="count-basket-elements" type="hidden" name="counter" value="">
+                </div>
+                <p class="item2"><span>Магазин работает только с юридическими лицами</span></p>
+                {% if app.user is empty%}
+                    <p class="item2"><span>Сайт автоматически генерирует договор и счета</span></p>
+                {% endif %}
+                <p><strong>Доставка:</strong> в областные города РБ при минимальном<br /> заказе от 2 000 000 р.</p>
+                <p><strong>Самовывоз:</strong> скидка {{ delivery_discount }}% ({{ manual_delivery_address }})</p>
+            {{ form_end(form) }}
+            {% else %}
+            <p class="price"><strong>Товар временно отсутствует на складе</strong></p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="wrap">
+    <ul class="catalog_list">
+        {% for product in products %}
+            <li><a href="{{ path('product', {url: product.url, brand:brand.url}) }}"><span><img src="{{ product | itm_ipw_url('picture') }}" alt=""></span><b>{{ product.name }}</b></a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+<script type="text/javascript" src="{{ asset('js/cookie.js') }}"></script>
+<script>
+
+    $(document).ready(function(){
+        $('.slider3 img').click(function(){
+        $('.fancybox img').attr('src', $(this).attr('original_picture'));
+       });
+
+        $('#form_quantity').on('change', function(){
+            if(this.value <= 0) {
+                this.value = 1;
+            }
+        })
+
+    });
+
+
+</script>
+{% endblock content %}
